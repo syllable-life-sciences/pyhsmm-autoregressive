@@ -1,6 +1,6 @@
 from distutils.core import setup
 from setuptools.command.build_ext import build_ext as _build_ext
-from Cython.Build import cythonize
+#from Cython.Build import cythonize
 import numpy as np
 from os.path import dirname, join, exists
 from os import mkdir
@@ -8,10 +8,15 @@ from shutil import move
 import tarfile
 from six.moves.urllib.request import urlretrieve
 from glob import glob
+import os
 
 # make dependency directory
 if not exists('deps'):
     mkdir('deps')
+
+
+os.system('pip install cython')
+from Cython.Build import cythonize
 
 # download Eigen if we don't have it in deps
 eigenurl = 'http://bitbucket.org/eigen/eigen/get/3.2.6.tar.gz'
